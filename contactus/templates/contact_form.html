@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+    <form method="post" id="contact_form" class="max-w-3xl mx-auto bg-white shadow-lg rounded-lg p-6">
+        {% csrf_token %}
+
+        <div class="mt-4">                
+            <label for="{{ form.name.id_for_label }}" class="block text-sm font-medium text-gray-700">Name</label>
+            {{ form.name }}
+            {% if form.name.errors %}
+                <div class="text-red-700 transition duration-300 ease-in-out hover:text-red-800 text-sm mt-1">
+                    {{ form.name.errors }}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="mt-4">                
+            <label for="{{ form.email.id_for_label }}" class="block text-sm font-medium text-gray-700">Email</label>
+            {{ form.email }}
+            {% if form.email.errors %}
+                <div class="text-red-700 transition duration-300 ease-in-out hover:text-red-800 text-sm mt-1">
+                    {{ form.email.errors }}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Subject -->
+        <div class="mt-4">
+            <label for="{{ form.subject.id_for_label }}" class="block text-sm font-medium text-gray-700">Subject</label>
+            {{ form.subject }}
+            {% if form.subject.errors %}
+                <div class="text-red-700 transition duration-300 ease-in-out hover:text-red-800 text-sm mt-1">
+                    {{ form.subject.errors }}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Message -->
+        <div class="mt-4">
+            <label for="{{ form.message.id_for_label }}" class="block text-sm font-medium text-gray-700">Message</label>
+            {{ form.message }}
+            {% if form.message.errors %}
+                <div class="text-red-700 transition duration-300 ease-in-out hover:text-red-800 text-sm mt-1">
+                    {{ form.message.errors }}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Submit Button -->
+        <div class="mt-4">
+            <button type="submit" 
+                class="px-4 py-2 text-white bg-blue-950 rounded-lg shadow-md transition duration-300 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                <i class="fa-regular fa-paper-plane"></i> Send Email
+            </button>
+        </div>
+
+    </form>
+
+</body>
+</html>

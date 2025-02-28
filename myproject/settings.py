@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "contactus",
 ]
 
 MIDDLEWARE = [
@@ -85,6 +86,17 @@ DATABASES = {
     }
 }
 
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0' 
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+
+EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+EMAIL_HOST_USER = '979665cc4e1288'
+EMAIL_HOST_PASSWORD = 'cf4d3e2704ac10'
+EMAIL_USE_TLS = True 
+EMAIL_PORT = 2525
+DEFAULT_FROM_EMAIL = 'admin@example.com'
+CONTACT_EMAIL = 'contact@example.com'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
